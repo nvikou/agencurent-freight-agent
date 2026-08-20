@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AgenCurent — нейро-аналитик конкурентов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="top">
+        <div class="brand-block">
+            <p class="brand">AgenCurent</p>
+            <p class="tagline">Нейро-аналитик конкурентов · транспорт базы</p>
+        </div>
+        <nav class="top-actions" aria-label="Действия">
+            <button type="button" id="btn-view-chat" class="btn btn-nav active">
+                Чат
+            </button>
+            <button type="button" id="btn-view-quotes" class="btn btn-nav">
+                Quotes
+            </button>
+            <button type="button" id="btn-collect" class="btn btn-signal">
+                Собрать цены
+            </button>
+            <button type="button" id="btn-clear" class="btn btn-ghost">
+                Очистить
+            </button>
+        </nav>
+    </header>
+
+    <main class="workspace">
+        <section id="view-chat" class="view chat-view is-active" aria-label="Чат с агентом">
+            <div id="messages" class="messages" role="log"></div>
+
+            <div class="composer-wrap">
+                <div class="suggestions" id="suggestions">
+                    <button type="button" class="suggest" data-q="Сравни Dellin, ПЭК и Baikal: Санкт-Петербург → Москва">
+                        СПб → Москва
+                    </button>
+                    <button type="button" class="suggest" data-q="Сравни три перевозчика по маршруту Москва → Омск">
+                        Москва → Омск
+                    </button>
+                    <button type="button" class="suggest" data-q="Кто дешевле на Омск → Санкт-Петербург?">
+                        Кто дешевле?
+                    </button>
+                </div>
+                <form id="chat-form" class="composer">
+                    <label class="sr-only" for="chat-input">Сообщение</label>
+                    <textarea
+                        id="chat-input"
+                        rows="1"
+                        placeholder="Спросите агента… например: сравни Dellin, ПЭК и Baikal"
+                        required
+                    ></textarea>
+                    <button type="submit" class="btn btn-primary" id="btn-send">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="view-quotes" class="view quotes-view" aria-label="Котировки" hidden>
+            <div class="quotes-toolbar">
+                <div class="toggle-row">
+                    <button type="button" class="chip active" data-mode="latest">
+                        Последние
+                    </button>
+                    <button type="button" class="chip" data-mode="history">
+                        История
+                    </button>
+                </div>
+                <p class="rule-strip">
+                    Стандарт · без упаковки · 1 м³ · 1 кг · 1 место
+                </p>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Маршрут</th>
+                            <th>Перевозчик</th>
+                            <th>Цена</th>
+                            <th>Срок</th>
+                            <th>Источник</th>
+                            <th>t</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quotes-body">
+                        <tr><td colspan="6">Загрузка…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <span>Dellin · ПЭК · Baikal</span>
+        <span id="health">API…</span>
+    </footer>
+
+    <script src="/vendor/marked.min.js"></script>
+    <script src="/vendor/purify.min.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
